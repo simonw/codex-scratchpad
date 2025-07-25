@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log Viewer</title>
+<style>
+body { font-family: sans-serif; margin: 20px; }
+pre { white-space: pre-wrap; margin: 0; }
+.text-block { background: #f5f5f5; padding: 0.5em; margin-bottom: 1em; border-radius: 4px; }
+.user { background: #eef; padding: 0.5em; margin-bottom: 1em; border-left: 4px solid #99f; }
+.assistant { background: #efe; padding: 0.5em; margin-bottom: 1em; border-left: 4px solid #9f9; }
+.system { background: #f9f9f9; padding: 0.5em; margin-bottom: 1em; border-left: 4px solid #ccc; }
+</style>
+</head>
+<body>
+<h1>solution_01_agent_08.log</h1>
+<div id="content">Loading...</div>
+<script>
+async function loadLog() {
+  const url = 'https://raw.githubusercontent.com/lyang36/IMO25/refs/heads/main/run_logs/solution_01_agent_08.log';
+  const res = await fetch(url);
+  const text = await res.text();
+  const parts = parseLog(text);
+  render(parts);
+}
+
+function parseLog(text) {
+  const regex = /{[\s\S]*?^}/gm;
+  const parts = [];
+  let index = 0;
+  for (const match of text.matchAll(regex)) {
+    const start = match.index;
+    if (start > index) {
+      const preceding = text.slice(index, start).trim();
+      if (preceding) parts.push({type: 'text', text: preceding});
+    }
+    let obj = null;
+    try { obj = JSON.parse(match[0]); } catch {}
+    parts.push({type: 'json', json: obj, raw: match[0]});
+    index = start + match[0].length;
+  }
+  const tail = text.slice(index).trim();
+  if (tail) parts.push({type: 'text', text: tail});
+  return parts;
+}
+
+function render(parts) {
+  const container = document.getElementById('content');
+  container.innerHTML = '';
+  for (const part of parts) {
+    if (part.type === 'text') {
+      const pre = document.createElement('pre');
+      pre.className = 'text-block';
+      pre.textContent = part.text;
+      container.appendChild(pre);
+    } else if (part.json) {
+      const div = document.createElement('div');
+      if (part.json.systemInstruction) {
+        const sys = document.createElement('details');
+        const sum = document.createElement('summary');
+        sum.textContent = 'System Instruction';
+        sys.appendChild(sum);
+        const pre = document.createElement('pre');
+        pre.textContent = part.json.systemInstruction.parts.map(p => p.text).join('');
+        sys.appendChild(pre);
+        div.appendChild(sys);
+      }
+      if (Array.isArray(part.json.contents)) {
+        for (const msg of part.json.contents) {
+          const mdiv = document.createElement('div');
+          mdiv.className = msg.role;
+          const strong = document.createElement('strong');
+          strong.textContent = msg.role + ':';
+          mdiv.appendChild(strong);
+          const pre = document.createElement('pre');
+          pre.textContent = msg.parts.map(p => p.text).join('');
+          mdiv.appendChild(pre);
+          div.appendChild(mdiv);
+        }
+      }
+      container.appendChild(div);
+    } else {
+      const pre = document.createElement('pre');
+      pre.textContent = part.raw;
+      container.appendChild(pre);
+    }
+  }
+}
+
+loadLog();
+</script>
+</body>
+</html>
