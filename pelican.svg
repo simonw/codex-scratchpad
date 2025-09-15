@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7ec8ff" />
+      <stop offset="60%" stop-color="#bfe6ff" />
+      <stop offset="100%" stop-color="#f4f9ff" />
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9dc98f" />
+      <stop offset="100%" stop-color="#6ba866" />
+    </linearGradient>
+    <radialGradient id="sun" cx="85%" cy="15%" r="20%">
+      <stop offset="0%" stop-color="#fff3b0" />
+      <stop offset="100%" stop-color="#ffd166" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a4a4a" />
+      <stop offset="100%" stop-color="#2e2e2e" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="450" fill="url(#sky)" />
+  <circle cx="470" cy="70" r="70" fill="url(#sun)" />
+  <rect y="320" width="600" height="130" fill="url(#ground)" />
+  <rect y="300" width="600" height="60" fill="url(#road)" />
+  <path d="M0 300 Q120 280 240 300 T600 300" fill="#3f3f3f" opacity="0.6" />
+
+  <g transform="translate(160,210)">
+    <!-- Bicycle wheels -->
+    <g fill="none" stroke="#1f2d3d" stroke-width="6" stroke-linecap="round">
+      <circle cx="0" cy="120" r="60" fill="#ffffff" fill-opacity="0.2" />
+      <circle cx="220" cy="120" r="60" fill="#ffffff" fill-opacity="0.2" />
+      <circle cx="0" cy="120" r="10" fill="#1f2d3d" />
+      <circle cx="220" cy="120" r="10" fill="#1f2d3d" />
+      <path d="M0 120 L90 40 L220 120" />
+      <path d="M90 40 L75 0" />
+      <path d="M90 40 L210 50" />
+      <path d="M0 120 L80 120 L90 40" />
+      <path d="M80 120 L110 160" />
+      <path d="M220 120 L165 70" />
+      <circle cx="80" cy="120" r="10" fill="#1f2d3d" />
+    </g>
+
+    <g stroke="#1f2d3d" stroke-width="6" stroke-linecap="round">
+      <path d="M210 50 L245 30" />
+      <path d="M245 30 L260 20" />
+      <path d="M80 120 L65 150" />
+    </g>
+    <g fill="none" stroke="#1f2d3d" stroke-width="4" stroke-linecap="round">
+      <path d="M65 150 L90 150" />
+      <path d="M260 20 L280 25" />
+    </g>
+
+    <!-- Pelican -->
+    <g transform="translate(-40,-40)">
+      <path d="M160 180 C190 120 280 150 250 220 C240 245 205 260 170 240 C150 230 145 205 160 180 Z" fill="#eef0f2" stroke="#d5d7db" stroke-width="4" />
+      <ellipse cx="210" cy="210" rx="45" ry="35" fill="#f9fafc" opacity="0.8" />
+      <path d="M175 200 C155 170 120 150 105 165 C90 180 120 210 150 225" fill="#cfd5dd" opacity="0.9" />
+      <path d="M118 240 C138 250 160 255 170 240" fill="#cfd5dd" opacity="0.9" />
+      <circle cx="110" cy="140" r="38" fill="#f4f6f8" stroke="#d5d7db" stroke-width="4" />
+      <path d="M90 138 C70 120 45 120 10 132 C35 150 76 178 112 170" fill="#f2a541" stroke="#d6842b" stroke-width="4" stroke-linejoin="round" />
+      <path d="M12 132 Q40 124 68 135" fill="none" stroke="#d6842b" stroke-width="4" stroke-linecap="round" />
+      <circle cx="125" cy="132" r="10" fill="#1f2d3d" />
+      <circle cx="128" cy="130" r="4" fill="#ffffff" />
+      <path d="M130 105 C150 100 165 105 180 120" fill="none" stroke="#1f2d3d" stroke-width="6" stroke-linecap="round" />
+      <path d="M188 250 C200 272 225 280 235 260" fill="none" stroke="#f9b05d" stroke-width="12" stroke-linecap="round" />
+      <path d="M200 248 L210 238" stroke="#f9b05d" stroke-width="12" stroke-linecap="round" />
+      <path d="M150 250 C138 270 122 285 110 272" fill="none" stroke="#f9b05d" stroke-width="12" stroke-linecap="round" />
+      <path d="M118 274 L108 266" stroke="#f9b05d" stroke-width="12" stroke-linecap="round" />
+      <path d="M160 170 Q210 150 240 170" fill="none" stroke="#1f2d3d" stroke-width="6" stroke-linecap="round" />
+      <path d="M122 110 L145 70" stroke="#1f2d3d" stroke-width="6" stroke-linecap="round" />
+      <path d="M145 70 L190 75" stroke="#1f2d3d" stroke-width="6" stroke-linecap="round" />
+      <path d="M160 175 Q210 210 250 190" fill="none" stroke="#d5d7db" stroke-width="6" stroke-linecap="round" opacity="0.7" />
+      <path d="M85 134 C70 154 78 168 95 172" fill="#f4f6f8" />
+      <path d="M76 145 C72 152 74 160 82 163" fill="#d5d7db" />
+    </g>
+  </g>
+
+  <g opacity="0.5" stroke="#ffffff" stroke-width="4" stroke-linecap="round">
+    <path d="M40 260 Q70 250 100 260" />
+    <path d="M320 250 Q350 240 380 250" />
+    <path d="M500 260 Q530 250 560 260" />
+  </g>
+</svg>
